@@ -13,6 +13,8 @@ import java.util.List;
 
 public class ListaDeCandidatos extends AppCompatActivity {
     private static List<Candidato> candidatos;
+    private AdapterCanditatos adapter;
+    private ListView listaDeCandidatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,9 @@ public class ListaDeCandidatos extends AppCompatActivity {
         preencheCursos();
 
 
-        final ListView listaDeCandidatos = (ListView) findViewById(R.id.lista);
+        listaDeCandidatos = (ListView) findViewById(R.id.lista);
 
-        AdapterCanditatos adapter =
+        adapter =
                 new AdapterCanditatos(candidatos, this);
 
         listaDeCandidatos.setAdapter(adapter);
@@ -39,6 +41,13 @@ public class ListaDeCandidatos extends AppCompatActivity {
                 startActivityForResult(test, 101);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        candidatos.get(data.getIntExtra("posicao",-1)).setEstaAssinado(true);
+        adapter.notifyDataSetChanged();
     }
 
     public void preencheCursos() {
