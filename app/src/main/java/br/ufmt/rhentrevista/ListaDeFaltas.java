@@ -142,4 +142,16 @@ public class ListaDeFaltas extends AppCompatActivity {
         faltas = lista;
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent resultadoIntent = new Intent();
+        resultadoIntent.putExtra("posicao", -1);
+        resultadoIntent.putExtra("faltas", contadorFaltas);
+        setResult(201,resultadoIntent);
+        finish();
+    }
 }
+

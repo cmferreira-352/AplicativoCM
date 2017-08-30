@@ -51,11 +51,11 @@ public class ListaDeCandidatos extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 201){
+        if (resultCode == 201 && (data.getIntExtra("posicao", -1) != -1)){
             candidatos.get(data.getIntExtra("posicao", -1)).setEstaAssinado(StatusEnum.Entrevistado);
             candidatos.get(data.getIntExtra("posicao", -1)).setPontosPerdidos(data.getIntExtra("faltas", -1));
             adapter.notifyDataSetChanged();
-        } else {
+        } else if (resultCode == 101 && (data.getIntExtra("posicao", -1) != -1)){
             candidatos.get(data.getIntExtra("posicao", -1)).setEstaAssinado(StatusEnum.Assinado);
             adapter.notifyDataSetChanged();
         }
@@ -72,5 +72,12 @@ public class ListaDeCandidatos extends AppCompatActivity {
 
     public List<Candidato> getCandidatos() {
         return candidatos;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

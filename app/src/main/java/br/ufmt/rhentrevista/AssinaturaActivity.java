@@ -70,7 +70,6 @@ public class AssinaturaActivity extends AppCompatActivity {
                 ListaDeCandidatos candidatos = new ListaDeCandidatos();
                 Intent resultadoIntent = new Intent();
                 resultadoIntent.putExtra("posicao", posicao);
-                Log.d("POSCICAO", "A POSICAO QUE CHEGA É: "+posicao);
                 if (posicao != -1) setResult(101, resultadoIntent);
                 Bitmap signatureBitmap = assinaturaPad.getSignatureBitmap();
                 if (addJpgSignatureToGallery(signatureBitmap,candidatos.getCandidatos().get(posicao).getCpf())) {
@@ -163,4 +162,15 @@ public class AssinaturaActivity extends AppCompatActivity {
             );
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent resultadoIntent = new Intent();
+        resultadoIntent.putExtra("posicao", -1);
+        setResult(101, resultadoIntent);
+        finish();
+    }
+
+
 }
