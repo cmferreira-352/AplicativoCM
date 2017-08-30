@@ -3,10 +3,11 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
     <TextView
         android:id="@+id/item1Header"
-        android:layout_width="300dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="@color/primaryTextColor"
+        android:padding="5dp"
         android:background="@color/colorPrimaryLight"
         android:text="CPF/Nome" />
 
@@ -15,10 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="@color/primaryTextColor"
         android:background="@color/colorPrimaryLight"
-        android:text="Assinado"
-        android:textSize="15dp"
+        android:text="Status"
+        android:padding="5dp"
         android:layout_toRightOf="@id/item1Header"/>
     <ListView
         android:id="@+id/lista"

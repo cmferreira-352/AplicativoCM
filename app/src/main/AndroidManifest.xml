@@ -13,9 +13,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/TelaCheia"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:noHistory="true"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:theme="@style/TelaCheia">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +26,8 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".ListaDeCandidatos" />
-        <activity android:name=".AssinaturaActivity"/>
+        <activity android:name=".AssinaturaActivity" />
+        <activity android:name=".ListaDeFaltas" />
     </application>
 
 </manifest>

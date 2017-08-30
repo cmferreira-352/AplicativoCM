@@ -1,3 +1,4 @@
+package br.ufmt.rhentrevista;
 
 public enum NivelFalta {
     LEVE,

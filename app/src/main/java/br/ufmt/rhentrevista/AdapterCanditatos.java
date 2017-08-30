@@ -1,6 +1,7 @@
 package br.ufmt.rhentrevista;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -45,6 +46,11 @@ public class AdapterCanditatos extends BaseAdapter {
         cpfTV.setText(candidato.getCpf());
         nomeTV.setText(candidato.getNome());
         assinadoTV.setText(String.valueOf(candidato.estaAssinado()));
+        if(position % 2 == 0){
+            view.setBackgroundColor(Color.parseColor("#ffffff"));
+        } else {
+            view.setBackgroundColor(Color.parseColor("#cfd2d8"));
+        }
         return view;
     }
 }

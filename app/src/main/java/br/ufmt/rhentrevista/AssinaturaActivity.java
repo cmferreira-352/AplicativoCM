@@ -95,7 +95,6 @@ public class AssinaturaActivity extends AppCompatActivity {
                                            @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case REQUEST_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length <= 0
                         || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(AssinaturaActivity.this, "Não é possível salvar imagens em armazenamento externo", Toast.LENGTH_SHORT).show();
@@ -105,7 +104,7 @@ public class AssinaturaActivity extends AppCompatActivity {
     }
 
     public File getAlbumStorageDir(String albumName) {
-        // Get the directory for the user's public pictures directory.
+        // Pega o diretorio para a pasta pública de imagens do usuário
         File file = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), albumName);
         if (!file.mkdirs()) {
@@ -127,7 +126,7 @@ public class AssinaturaActivity extends AppCompatActivity {
     public boolean addJpgSignatureToGallery(Bitmap signature, String cpfCandidato) {
         boolean result = false;
         try {
-            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature_%s.jpg", cpfCandidato));
+            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format("Assinatura_%s.jpg", cpfCandidato));
             saveBitmapToJPG(signature, photo);
             scanMediaFile(photo);
             result = true;
@@ -145,18 +144,18 @@ public class AssinaturaActivity extends AppCompatActivity {
     }
 
     /**
-     * Checks if the app has permission to write to device storage
+     * Checa se o app tem permissão para escrever do armazenamento do dispositivo
      * <p/>
-     * If the app does not has permission then the user will be prompted to grant permissions
+     * Se o aplicativo não tiver permissão, o usuário poderá conceder permissão
      *
-     * @param activity the activity from which permissions are checked
+     * @param activity A activity que pedirá as pemissões
      */
     public static void verifyStoragePermissions(Activity activity) {
-        // Check if we have write permission
+        // Checa se há permissão para escrever
         int permission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
+            // Não há permissão então pedimos ao usuário
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS_STORAGE,

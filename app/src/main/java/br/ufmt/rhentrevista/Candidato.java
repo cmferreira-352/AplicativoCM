@@ -3,12 +3,13 @@ package br.ufmt.rhentrevista;
 public class Candidato {
     private String cpf;
     private String nome;
-    private boolean estaAssinado = false;
+    private StatusEnum estaAssinado;
     private int pontosPerdidos;
 
     public Candidato(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
+        estaAssinado = StatusEnum.Registrado;
     }
 
     public String getCpf() {
@@ -27,11 +28,11 @@ public class Candidato {
         this.nome = nome;
     }
 
-    public boolean estaAssinado() {
+    public StatusEnum estaAssinado() {
         return estaAssinado;
     }
 
-    public void setEstaAssinado(boolean estaAssinado) {
+    public void setEstaAssinado(StatusEnum estaAssinado) {
         this.estaAssinado = estaAssinado;
     }
 

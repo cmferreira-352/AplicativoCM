@@ -15,5 +15,6 @@
         completions."
     </string>
     <string name="login">Usuário</string>
+    <string name="title_activity_teste">testeActivity</string>
 
 </resources>

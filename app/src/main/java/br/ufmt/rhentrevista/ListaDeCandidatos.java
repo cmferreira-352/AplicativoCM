@@ -25,20 +25,25 @@ public class ListaDeCandidatos extends AppCompatActivity {
 
         listaDeCandidatos = (ListView) findViewById(R.id.lista);
 
-        adapter =
-                new AdapterCanditatos(candidatos, this);
+        adapter = new AdapterCanditatos(candidatos, this);
 
         listaDeCandidatos.setAdapter(adapter);
 
         listaDeCandidatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            Intent test = new Intent(getApplicationContext(), AssinaturaActivity.class);
+            Intent assinatura = new Intent(getApplicationContext(), AssinaturaActivity.class);
+            Intent falta = new Intent(getApplicationContext(), ListaDeFaltas.class);
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Candidato candidato = (Candidato) listaDeCandidatos.getItemAtPosition(position);
-                Log.d("POSICAO", "A posição é: "+position);
-                test.putExtra("posicao", position);
-                startActivityForResult(test, 101);
+                if (candidato.estaAssinado() == StatusEnum.Assinado) {
+                    falta.putExtra("posicao", position);
+                    startActivityForResult(falta,201);
+                } else if (candidato.estaAssinado() == StatusEnum.Registrado){
+                    assinatura.putExtra("posicao", position);
+                    startActivityForResult(assinatura, 101);
+                }
+
             }
         });
     }
@@ -46,8 +51,14 @@ public class ListaDeCandidatos extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        candidatos.get(data.getIntExtra("posicao",-1)).setEstaAssinado(true);
-        adapter.notifyDataSetChanged();
+        if (resultCode == 201){
+            candidatos.get(data.getIntExtra("posicao", -1)).setEstaAssinado(StatusEnum.Entrevistado);
+            candidatos.get(data.getIntExtra("posicao", -1)).setPontosPerdidos(data.getIntExtra("faltas", -1));
+            adapter.notifyDataSetChanged();
+        } else {
+            candidatos.get(data.getIntExtra("posicao", -1)).setEstaAssinado(StatusEnum.Assinado);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     public void preencheCursos() {

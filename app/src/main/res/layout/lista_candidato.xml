@@ -13,16 +13,16 @@
             android:id="@+id/cpfTV"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
+            android:textColor="#000e55"
             android:text="419.790.128-30" />
 
         <TextView
             android:id="@+id/nomeTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
             android:maxLines="2"
             android:text="João Ferreira da Silva"
+            android:textColor="#000e55"
             android:textSize="15dp" />
     </LinearLayout>
 
@@ -30,7 +30,7 @@
         android:id="@+id/assinadoTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
+        android:textColor="#000e55"
         android:layout_gravity="center"
         android:text="SIM" />
 

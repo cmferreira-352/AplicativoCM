@@ -54,14 +54,18 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Limpar"
-            android:enabled="false" />
+            android:enabled="false"
+            android:textColor="@color/primaryTextColor"
+            android:background="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Salvar"/>
+            android:text="Salvar"
+            android:textColor="@color/primaryTextColor"
+            android:background="@color/colorPrimary"/>
             <!--android:enabled="false" -->
 
     </LinearLayout>
