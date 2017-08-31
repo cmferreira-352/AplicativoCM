@@ -25,9 +25,12 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".ListaDeCandidatos" />
-        <activity android:name=".AssinaturaActivity" />
-        <activity android:name=".ListaDeFaltas" />
+        <activity android:name=".ListaDeCandidatos"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".AssinaturaActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ListaDeFaltas"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
     </application>
 
 </manifest>

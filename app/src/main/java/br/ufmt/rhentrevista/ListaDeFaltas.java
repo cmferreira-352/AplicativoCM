@@ -3,6 +3,7 @@ package br.ufmt.rhentrevista;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -152,6 +153,12 @@ public class ListaDeFaltas extends AppCompatActivity {
         resultadoIntent.putExtra("faltas", contadorFaltas);
         setResult(201,resultadoIntent);
         finish();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        contadorFaltas = 0;
     }
 }
 
