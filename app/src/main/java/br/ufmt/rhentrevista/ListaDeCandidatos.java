@@ -1,9 +1,8 @@
 package br.ufmt.rhentrevista;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -38,8 +37,8 @@ public class ListaDeCandidatos extends AppCompatActivity {
                 Candidato candidato = (Candidato) listaDeCandidatos.getItemAtPosition(position);
                 if (candidato.estaAssinado() == StatusEnum.Assinado) {
                     falta.putExtra("posicao", position);
-                    startActivityForResult(falta,201);
-                } else if (candidato.estaAssinado() == StatusEnum.Registrado){
+                    startActivityForResult(falta, 201);
+                } else if (candidato.estaAssinado() == StatusEnum.Registrado) {
                     assinatura.putExtra("posicao", position);
                     startActivityForResult(assinatura, 101);
                 }
@@ -51,11 +50,11 @@ public class ListaDeCandidatos extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 201 && (data.getIntExtra("posicao", -1) != -1)){
+        if (resultCode == 201 && (data.getIntExtra("posicao", -1) != -1)) {
             candidatos.get(data.getIntExtra("posicao", -1)).setEstaAssinado(StatusEnum.Entrevistado);
             candidatos.get(data.getIntExtra("posicao", -1)).setPontosPerdidos(data.getIntExtra("faltas", -1));
             adapter.notifyDataSetChanged();
-        } else if (resultCode == 101 && (data.getIntExtra("posicao", -1) != -1)){
+        } else if (resultCode == 101 && (data.getIntExtra("posicao", -1) != -1)) {
             candidatos.get(data.getIntExtra("posicao", -1)).setEstaAssinado(StatusEnum.Assinado);
             adapter.notifyDataSetChanged();
         }

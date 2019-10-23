@@ -46,7 +46,7 @@ public class AdapterCanditatos extends BaseAdapter {
         cpfTV.setText(candidato.getCpf());
         nomeTV.setText(candidato.getNome());
         assinadoTV.setText(String.valueOf(candidato.estaAssinado()));
-        if(position % 2 == 0){
+        if (position % 2 == 0) {
             view.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
             view.setBackgroundColor(Color.parseColor("#cfd2d8"));
